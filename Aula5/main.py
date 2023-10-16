@@ -1,6 +1,6 @@
 
 
-temperauta = 31
+temperauta = 30
 
 if temperauta < 0 :
     print("Esta congelando la fora")
