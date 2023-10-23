@@ -1,4 +1,4 @@
-Claro! Aqui está um tutorial sobre tipos de dados em Python:
+
 
 # Tutorial de Tipos de Dados em Python
 
