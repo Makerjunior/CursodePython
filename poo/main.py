@@ -62,7 +62,7 @@ livro1.mostrar_informacoes()
 Vamos criar uma subclasse chamada `LivroDigital` que herda de `Livro` e adiciona um novo atributo para o formato digital.
 
 ```python
-# Definindo a classe Livro com encapsulamento
+# 1 Definindo a classe Livro com encapsulamento
 class Livro:
     def __init__(self, titulo, autor, ano_publicacao):
         self.__titulo = titulo
