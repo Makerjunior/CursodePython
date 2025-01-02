@@ -1,76 +1,103 @@
-""" Em Python, não há uma maneira de tornar atributos e métodos
-verdadeiramente privados, como em algumas outras linguagens (por exemplo, Java).
-No entanto, você pode seguir convenções para indicar 
-que eles não devem ser acessados diretamente fora da classe.
-
-Atributos e Métodos com um Único Subscrito (_): 
-    Indicam que são "protegidos" e que seu acesso deve ser evitado fora da classe.
-Atributos e Métodos com Dois Subscritos (__): 
-    Indicam que são "privados" e que o acesso externo deve ser evitado. 
-    O Python usa um mecanismo chamado "name mangling" para modificar o nome desses atributos e métodos.
-"""
 
 class Carros:
     
     def __init__(self, marca, modelo, ano):
-        # Atributos privados, não devem ser acessados diretamente
-        self.__marca = marca
-        self.__modelo = modelo
-        self.__ano = ano
-
-    # Método para definir informações
+         self.__marca = marca
+         self.__modelo = modelo
+         self.__ano = ano
+        
+    
     def definir_informacoes(self, marca, modelo, ano):
         self.__marca = marca
         self.__modelo = modelo
         self.__ano = ano
-
-    # Método para mostrar informações
+         
     def mostrar_informacoes(self):
         print(f"Marca: {self.__marca}")  
         print(f"Modelo: {self.__modelo}")  
-        print(f"Ano: {self.__ano}")
-
-    # Getters e Setters para 'marca'
+        print(f"Ano: {self.__ano}")  
+       
     def get_marca(self):
         return self.__marca
-
+    
     def set_marca(self, marca):
         self.__marca = marca
-
-    # Getters e Setters para 'modelo'
+        
     def get_modelo(self):
         return self.__modelo
-
+    
     def set_modelo(self, modelo):
         self.__modelo = modelo
-
-    # Getters e Setters para 'ano'
+    
     def get_ano(self):
         return self.__ano
-
+    
     def set_ano(self, ano):
         self.__ano = ano
+       
 
 
-# Criando instâncias da classe
-carro1 = Carros("Toyota", "Corolla", 2022)
-carro2 = Carros("Honda", "Civic", 2023)
 
-# Mostrando informações do carro1
-carro1.mostrar_informacoes()
+class CarrosEsportivos(Carros):
+    def __init__(self, marca, modelo, ano, velocidade_maxima, potencia):
+        super().__init__(marca, modelo, ano)
+        self.__velocidade_maxima = velocidade_maxima
+        self.__potencia = potencia
+        self.__ligado = False
 
-print('----------------------------------')
+    def mostrar_informacoes(self):
+        super().mostrar_informacoes() 
+        print(f"Velocidade Maxima {self.__velocidade_maxima}")  
+        print(f"Potencia {self.__potencia}") 
+        
+    def ligar(self):
+        if not self.__ligado:
+            self.__ligado = True 
+            print(f"O carro {self.get_modelo()} foi ligado")
+        else:
+            print(f"O carro {self.get_modelo()}  ja esta ligado")      
+        
+    def desligar(self):
+        if self.__ligado:
+            self.__ligado = False
+            print(f"O carro {self.get_modelo()} foi desligado")
+        else:
+            print(f"O carro {self.get_modelo()} ja foi desligado")    
+    
+    def get_velocidade_maxima(self):
+        return __velocidade_maxima
+    
+    def set_velocidade_maxima(self, velocidade_maxima):
+        self.__velocidade_maxima = velocidade_maxima    
+    
+    
+    def get_potencia(self):
+        return self.__potencia
+    
+    def set_potencia(self, potencia):
+        self.__potencia = potencia
+        
+        
+         
+     
 
-# Alterando informações do carro1 usando os setters
-carro1.set_marca("Chevrolet")
-carro1.set_modelo("Opala")
-carro1.set_ano(1972)
+carro_esportivo = CarrosEsportivos("Ferrari","488", 2021, 330, 670)
+carro_esportivo.ligar()
+carro_esportivo.desligar()
+print('___________________________________________')
+carro_esportivo.mostrar_informacoes()
+print('___________________________________________')
+carro_esportivo.set_velocidade_maxima(550)
+carro_esportivo.set_potencia(1000)
+carro_esportivo.mostrar_informacoes()
+print('___________________________________________')
 
-# Mostrando informações atualizadas do carro1
 
-carro1.mostrar_informacoes()
 
-print('----------------------------------')
 
-# Mostrando informações do carro2
-carro2.mostrar_informacoes()
+
+
+
+
+
+

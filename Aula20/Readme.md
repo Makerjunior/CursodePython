@@ -1,4 +1,4 @@
-Claro! Vamos explorar o encapsulamento em Python, que é um dos pilares da programação orientada a objetos. O encapsulamento ajuda a proteger os dados internos de uma classe e a garantir que a integridade do objeto seja mantida. Vou explicar isso em detalhes usando exemplos de atributos e métodos privados, além de getters e setters.
+ Vamos explorar o encapsulamento em Python, que é um dos pilares da programação orientada a objetos. O encapsulamento ajuda a proteger os dados internos de uma classe e a garantir que a integridade do objeto seja mantida. Vou explicar isso em detalhes usando exemplos de atributos e métodos privados, além de getters e setters.
 
 ### 1. Atributos e Métodos Privados
 

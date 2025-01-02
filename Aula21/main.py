@@ -1,83 +1,95 @@
 class Carros:
     
     def __init__(self, marca, modelo, ano):
-        # Atributos privados
         self.__marca = marca
         self.__modelo = modelo
         self.__ano = ano
-
-    # Propriedade para 'marca'
-    @property
-    def marca(self):
-        """Getter para o atributo 'marca'"""
-        return self.__marca
-
-    @marca.setter
-    def marca(self, valor):
-        """Setter para o atributo 'marca'"""
-        self.__marca = valor
-
-    @marca.deleter
-    def marca(self):
-        """Deleter para o atributo 'marca'"""
-        del self.__marca
-
-    # Propriedade para 'modelo'
-    @property
-    def modelo(self):
-        """Getter para o atributo 'modelo'"""
-        return self.__modelo
-
-    @modelo.setter
-    def modelo(self, valor):
-        """Setter para o atributo 'modelo'"""
-        self.__modelo = valor
-
-    @modelo.deleter
-    def modelo(self):
-        """Deleter para o atributo 'modelo'"""
-        del self.__modelo
-
-    # Propriedade para 'ano'
-    @property
-    def ano(self):
-        """Getter para o atributo 'ano'"""
-        return self.__ano
-
-    @ano.setter
-    def ano(self, valor):
-        """Setter para o atributo 'ano'"""
-        self.__ano = valor
-
-    @ano.deleter
-    def ano(self):
-        """Deleter para o atributo 'ano'"""
-        del self.__ano
-
-    # Método para mostrar informações
+    
+    def definir_informacoes(self, marca, modelo, ano):
+        self.__marca = marca
+        self.__modelo = modelo
+        self.__ano = ano
+    
     def mostrar_informacoes(self):
         print(f"Marca: {self.__marca}")  
         print(f"Modelo: {self.__modelo}")  
         print(f"Ano: {self.__ano}")
+    
+    def get_marca(self):
+        return self.__marca
+    
+    def set_marca(self, marca):
+        self.__marca = marca
+    
+    def get_modelo(self):
+        return self.__modelo
+    
+    def set_modelo(self, modelo):
+        self.__modelo = modelo
+    
+    def get_ano(self):
+        return self.__ano
+    
+    def set_ano(self, ano):
+        self.__ano = ano
 
-# Criando instâncias da classe
-carro1 = Carros("Toyota", "Corolla", 2022)
-carro2 = Carros("Honda", "Civic", 2023)
+class CarroEsportivo(Carros):
+    
+    def __init__(self, marca, modelo, ano, velocidade_maxima, potencia):
+        super().__init__(marca, modelo, ano)
+        self.__velocidade_maxima = velocidade_maxima
+        self.__potencia = potencia
+        self.__ligado = False  # Estado inicial do carro
+    
+    def definir_informacoes(self, marca, modelo, ano, velocidade_maxima, potencia):
+        super().definir_informacoes(marca, modelo, ano)
+        self.__velocidade_maxima = velocidade_maxima
+        self.__potencia = potencia
+    
+    def mostrar_informacoes(self):
+        super().mostrar_informacoes()
+        print(f"Velocidade Maxima: {self.__velocidade_maxima} km/h")
+        print(f"Potencia: {self.__potencia} CV")
+        print(f"Status: {'Ligado' if self.__ligado else 'Desligado'}")
+    
+    def ligar(self):
+        if not self.__ligado:
+            self.__ligado = True
+            print("Carro esportivo ligado.")
+        else:
+            print("O carro ja esta ligado.")
+    
+    def desligar(self):
+        if self.__ligado:
+            self.__ligado = False
+            print("Carro esportivo desligado.")
+        else:
+            print("O carro ja esta desligado.")
+    
+    def get_velocidade_maxima(self):
+        return self.__velocidade_maxima
+    
+    def set_velocidade_maxima(self, velocidade_maxima):
+        self.__velocidade_maxima = velocidade_maxima
+    
+    def get_potencia(self):
+        return self.__potencia
+    
+    def set_potencia(self, potencia):
+        self.__potencia = potencia
 
-# Mostrando informações do carro1
-carro1.mostrar_informacoes()
+
+
+# Criando um carro esportivo
+carro_esportivo = CarroEsportivo("Ferrari", "488 Spider", 2021, 330, 670)
+
+# Usando os métodos específicos do carro esportivo
+carro_esportivo.ligar()
+carro_esportivo.mostrar_informacoes()
 
 print('----------------------------------')
 
-# Alterando informações do carro1 usando as propriedades
-carro1.marca = "Chevrolet"
-carro1.modelo = "Opala"
-carro1.ano = 1972
-
-# Mostrando informações atualizadas do carro1
-carro1.mostrar_informacoes()
-
-print('----------------------------------')
-
-# Mostrando informações do carro2
-carro2.mostrar_informacoes()
+# Atualizando informações
+carro_esportivo.definir_informacoes("Porsche", "911 Turbo", 2022, 320, 650)
+carro_esportivo.desligar()
+carro_esportivo.mostrar_informacoes()
